@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="de.diedavids.ceuil.web.customercategory.CustomerCategoryBrowse"
+        focusComponent="customerCategoriesTable"
+        lookupComponent="customerCategoriesTable"
+        messagesPack="de.diedavids.ceuil.web.customercategory">
+    <dsContext>
+        <groupDatasource id="customerCategoriesDs"
+                         class="de.diedavids.ceuil.entity.CustomerCategory"
+                         view="_local">
+            <query>
+                <![CDATA[select e from ceuil$CustomerCategory e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="customerCategoriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="customerCategoriesTable"
+                datasource="customerCategoriesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="customerCategoriesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="code"/>
+            </columns>
+            <rows datasource="customerCategoriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="customerCategoriesTable.create"/>
+                <button id="editBtn"
+                        action="customerCategoriesTable.edit"/>
+                <button id="removeBtn"
+                        action="customerCategoriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

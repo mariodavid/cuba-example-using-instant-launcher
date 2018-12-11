@@ -2,5 +2,7 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-ceuil"
           insertBefore="administration">
+        <item screen="ceuil$CustomerCategory.browse"/>
+        <item screen="ceuil$Customer.browse"/>
     </menu>
 </menu-config>

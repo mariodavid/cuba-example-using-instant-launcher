@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="de.diedavids.ceuil.web.customer.CustomerEdit"
+        datasource="customerDs"
+        focusComponent="fieldGroup"
+        messagesPack="de.diedavids.ceuil.web.customer">
+    <dsContext>
+        <datasource id="customerDs"
+                    class="de.diedavids.ceuil.entity.Customer"
+                    view="customer-view"/>
+        <collectionDatasource id="categoriesDs"
+                              class="de.diedavids.ceuil.entity.CustomerCategory"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from ceuil$CustomerCategory e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="customerDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="firstName"/>
+                <field optionsDatasource="categoriesDs"
+                       property="category"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
