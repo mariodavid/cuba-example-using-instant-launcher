@@ -13,6 +13,15 @@ values ('3bd9a199-d9ed-f4f2-5ef2-791f5c1e8e1e', 1, '2018-12-11 18:17:29', 'admin
 
 
 ----------------------------------------------------------------------------------------------------
+-- Launcher Command Groups
+----------------------------------------------------------------------------------------------------
+insert into DDCIL_LAUNCHER_COMMAND_GROUP
+(ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, NAME, CODE)
+values ('5108f1ad-26bb-7efe-c55e-d70f72a46bae', 1, '2018-12-11 19:40:59', 'admin', '2018-12-11 19:40:59', null, null, null, 'Administration', 'Administration');
+insert into DDCIL_LAUNCHER_COMMAND_GROUP
+(ID, VERSION, CREATE_TS, CREATED_BY, UPDATE_TS, UPDATED_BY, DELETE_TS, DELETED_BY, NAME, CODE)
+values ('b2c7fc9b-e44c-0147-e0e5-0fe0a9ba357c', 1, '2018-12-11 19:47:48', 'admin', '2018-12-11 19:47:48', null, null, null, 'Random', 'Random');
+----------------------------------------------------------------------------------------------------
 -- Launcher Commands
 ----------------------------------------------------------------------------------------------------
 
