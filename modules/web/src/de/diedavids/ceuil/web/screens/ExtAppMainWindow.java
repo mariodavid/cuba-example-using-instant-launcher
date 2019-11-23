@@ -1,6 +1,6 @@
 package de.diedavids.ceuil.web.screens;
 
-import com.haulmont.cuba.web.app.mainwindow.AppMainWindow;
+import de.diedavids.cuba.instantlauncher.web.screens.main.InstantLauncherAppMainWindow;
 
-public class ExtAppMainWindow extends AppMainWindow {
+public class ExtAppMainWindow extends InstantLauncherAppMainWindow {
 }
