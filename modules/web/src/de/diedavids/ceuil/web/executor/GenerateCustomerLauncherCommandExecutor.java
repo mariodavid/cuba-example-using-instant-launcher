@@ -1,5 +1,6 @@
 package de.diedavids.ceuil.web.executor;
 
+import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.gui.WindowManager.OpenType;
 import com.haulmont.cuba.gui.components.Frame;
 import com.haulmont.cuba.web.AppUI;
@@ -10,6 +11,8 @@ import de.diedavids.cuba.instantlauncher.web.launcher.LauncherCommandExecutor;
 import javax.inject.Inject;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component("ceuil_GenerateCustomerLauncherCommandExecutor")
 public class GenerateCustomerLauncherCommandExecutor implements LauncherCommandExecutor<BeanLauncherCommand> {
 
@@ -18,15 +21,28 @@ public class GenerateCustomerLauncherCommandExecutor implements LauncherCommandE
 
   @Override
   public void execute(BeanLauncherCommand launcherCommand) {
+    execute(launcherCommand, ParamsMap.empty());
+  }
 
-    Customer customer = customerService.generateCustomer();
+  @Override
+  public void execute(BeanLauncherCommand launcherCommand, Map<String, Object> inputParams) {
+
+    Customer customer = null;
+
+    if (inputParams.get("lastName") != null) {
+      customer = customerService.generateCustomer((String) inputParams.get("lastName"));
+    }
+    else {
+      customer = customerService.generateCustomer();
+    }
+
 
     updateUI(customer);
   }
 
   private void updateUI(Customer customer) {
     Frame frame = getFrame();
-    frame.showNotification("Customer " + customer.getName() + " created");
+    frame.showNotification("Customer " + customer.getFirstName() + " " + customer.getName() + " created");
     frame.openWindow("ceuil$Customer.browse", OpenType.NEW_TAB);
   }
 

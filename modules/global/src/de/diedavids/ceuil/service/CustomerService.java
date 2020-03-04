@@ -7,4 +7,5 @@ public interface CustomerService {
     String NAME = "ceuil_CustomerService";
 
     Customer generateCustomer();
+    Customer generateCustomer(String lastName);
 }

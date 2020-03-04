@@ -31,6 +31,21 @@ public class CustomerServiceBean implements CustomerService {
     return customer;
   }
 
+  @Override
+  public Customer generateCustomer(String lastName) {
+
+    Customer customer = dataManager.create(Customer.class);
+
+    Person person = Fairy.create().person();
+
+    customer.setName(lastName);
+    customer.setFirstName(person.getFirstName());
+    customer.setCategory(randomCustomerCategory());
+
+    dataManager.commit(customer);
+    return customer;
+  }
+
   private CustomerCategory randomCustomerCategory() {
 
     Random random = new Random();
